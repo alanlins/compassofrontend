@@ -4,21 +4,36 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      List
+      List Users
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-icon [name]="item.icon" slot="start"></ion-icon>
-      {{item.title}}
-      <div class="item-note" slot="end">
-        {{item.note}}
-      </div>
+  <ion-searchbar
+    animated
+    color="light"
+    placeholder="Pesquisar usuários"
+    (ionChange)="filterUsers($event)"
+  ></ion-searchbar>
+
+  <ion-list *ngIf="users.length === 0">
+    <ion-item *ngFor="let i of [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]">
+      <ion-label>
+        <ion-skeleton-text width="100%"></ion-skeleton-text>
+      </ion-label>
     </ion-item>
   </ion-list>
+
+  <ion-grid *ngIf="users.length > 0">
+    <ion-row *ngFor="let u of users | filter: textFilter">
+      <ion-col>
+        <ion-item (click)="selectUser(u)">
+          <ion-label>{{ u.id }} - {{ u.login }}</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <!--
     <div *ngIf="selectedItem" padding>
       You navigated here from <b>{{selectedItem.title }}</b>

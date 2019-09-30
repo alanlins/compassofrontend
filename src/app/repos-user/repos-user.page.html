@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      {{ title }}
+    </ion-title>
+    <br />
+    <ion-label>
+      {{ login }}
+    </ion-label>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let repo of repositories">
+        <ion-card style="width: 400px;">
+          <ion-card-content>
+            <ion-card-title> {{ repo.name }} </ion-card-title>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
