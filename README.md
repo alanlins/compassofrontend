@@ -5,4 +5,5 @@ Front-end feito com o framework Ionic para consumo da API do github. Para instal
 
 Após clonar o projeto, executar os seguintes comandos:
 
-*npm i *ionic serve
+*npm i 
+*ionic serve
